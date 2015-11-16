@@ -75,7 +75,7 @@ public class WeatherService {
     public class ActionFailedException extends Exception {
         public ActionFailedException() {
             super();
-            WeatherAlert.getAlert(mContext, R.string.general_input_error_alert, R.string.confirm_alert);
+            new WeatherAlert(mContext, R.string.general_input_error_alert, R.string.confirm_alert);
         }
     }
 }

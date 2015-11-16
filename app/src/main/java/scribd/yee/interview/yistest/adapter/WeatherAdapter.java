@@ -18,7 +18,7 @@ import scribd.yee.interview.yistest.data.Forecast;
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder> {
 
     JSONArray mDataSet;
-    Forecast forecast;
+    Forecast mForecast;
 
     public WeatherAdapter(JSONArray dataSet) {
         mDataSet = dataSet;
@@ -32,13 +32,13 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.WeatherV
 
     @Override
     public void onBindViewHolder(WeatherViewHolder holder, int position) {
-        forecast = new Forecast();
-        forecast.parseJSON(mDataSet.optJSONObject(position));
-        holder.mDay.setText(forecast.getDay());
-        holder.mDate.setText(forecast.getDate());
-        holder.mHigh.setText(forecast.getHigh());
-        holder.mLow.setText(forecast.getLow());
-        holder.mInGeneral.setText(forecast.getInGeneral());
+        mForecast = new Forecast();
+        mForecast.parseJSON(mDataSet.optJSONObject(position));
+        holder.mDay.setText(mForecast.getDay());
+        holder.mDate.setText(mForecast.getDate());
+        holder.mHigh.setText(mForecast.getHigh());
+        holder.mLow.setText(mForecast.getLow());
+        holder.mInGeneral.setText(mForecast.getInGeneral());
     }
 
     @Override

@@ -13,5 +13,5 @@
     <string name="city_state_not_match_alert">City and state are not matched</string>
     <string name="confirm_alert">Confirm</string>
     <string name="loading">loading…</string>
-    <string name="default_location">Default location is %1$s %2$s.</string>
+    <string name="default_location">Default location is Fremont CA.</string>
 </resources>
