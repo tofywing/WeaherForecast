@@ -12,13 +12,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import scribd.yee.interview.yistest.adapter.WeatherAdapter;
 import scribd.yee.interview.yistest.data.Channel;
 import scribd.yee.interview.yistest.service.WeatherAlert;
 import scribd.yee.interview.yistest.service.WeatherCallback;
-import scribd.yee.interview.yistest.service.WeatherDialog;
 import scribd.yee.interview.yistest.service.WeatherService;
 
 /**
@@ -43,6 +41,7 @@ public class WeatherActivity extends Activity implements WeatherCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
+        mService = new WeatherService(this, this);
         mInputCity = (EditText) findViewById(R.id.inputCity);
         mInputState = (EditText) findViewById(R.id.inputState);
         mSubmit = (Button) findViewById(R.id.submitButton);
@@ -93,7 +92,9 @@ public class WeatherActivity extends Activity implements WeatherCallback {
     }
 
     private void startService(String city, String state, Context context) {
-        new WeatherDialog(context, mDialog);
+        mDialog = new ProgressDialog(context);
+        mDialog.setMessage(context.getString(R.string.loading));
+        mDialog.show();
         mService.getWeather(city + "," + state);
     }
 

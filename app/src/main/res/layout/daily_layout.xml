@@ -16,11 +16,11 @@
 
         <TextView
             android:id="@+id/day"
-            style="@style/AppTheme.DailyText"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"/>
+            android:layout_alignParentTop="true"
+            android:textSize="15sp"/>
 
         <TextView
             android:id="@+id/date"
@@ -30,25 +30,18 @@
             android:layout_toRightOf="@id/day"/>
 
         <TextView
-            android:id="@+id/high"
+            android:id="@+id/temperature"
             style="@style/AppTheme.DailyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/date"/>
 
         <TextView
-            android:id="@+id/low"
-            style="@style/AppTheme.DailyText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/high"/>
-
-        <TextView
             android:id="@+id/inGeneral"
             style="@style/AppTheme.DailyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/low"/>
+            android:layout_toRightOf="@id/temperature"/>
 
         <View
             android:layout_width="match_parent"

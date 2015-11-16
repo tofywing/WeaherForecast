@@ -16,6 +16,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import scribd.yee.interview.yistest.R;
+import scribd.yee.interview.yistest.data.Channel;
 
 /**
  * Created by Yee on 11/15/15.
@@ -24,6 +25,7 @@ public class WeatherService {
 
     WeatherCallback mCallback;
     Context mContext;
+    private static String location;
 
     public WeatherService(WeatherCallback callback, Context context) {
         this.mCallback = callback;
@@ -63,6 +65,11 @@ public class WeatherService {
                     //Check general input error including empty city and state
                     if (count == 0) {
                         mCallback.onActionFailed(new ActionFailedException());
+                    } else {
+                        WeatherService.location = location;
+                        Channel channel = new Channel();
+                        channel.parseJSON(parseQuery.optJSONObject("results").optJSONObject("channel"));
+                        mCallback.onActionSuccess(channel);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

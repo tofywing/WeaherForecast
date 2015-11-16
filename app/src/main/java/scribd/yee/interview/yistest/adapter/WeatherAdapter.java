@@ -36,8 +36,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.WeatherV
         mForecast.parseJSON(mDataSet.optJSONObject(position));
         holder.mDay.setText(mForecast.getDay());
         holder.mDate.setText(mForecast.getDate());
-        holder.mHigh.setText(mForecast.getHigh());
-        holder.mLow.setText(mForecast.getLow());
+        holder.mTemperature.setText(String.format("%1$s - %2$s \u00B0F", mForecast.getHigh(), mForecast.getLow()));
         holder.mInGeneral.setText(mForecast.getInGeneral());
     }
 
@@ -51,8 +50,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.WeatherV
         CardView mDailyView;
         TextView mDay;
         TextView mDate;
-        TextView mHigh;
-        TextView mLow;
+        TextView mTemperature;
         TextView mInGeneral;
 
         public WeatherViewHolder(View itemView) {
@@ -60,8 +58,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.WeatherV
             mDailyView = (CardView) itemView.findViewById(R.id.daliy);
             mDay = (TextView) itemView.findViewById(R.id.day);
             mDate = (TextView) itemView.findViewById(R.id.date);
-            mHigh = (TextView) itemView.findViewById(R.id.high);
-            mLow = (TextView) itemView.findViewById(R.id.low);
+            mTemperature = (TextView) itemView.findViewById(R.id.temperature);
             mInGeneral = (TextView) itemView.findViewById(R.id.inGeneral);
         }
     }
