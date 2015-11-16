@@ -8,4 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.MainText">
+        <item name="android:keyTextSize">20sp</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
+
+    <style name="AppTheme.DailyText">
+        <item name="android:textSize">10sp</item>
+        <item name="android:layout_marginRight">8dp</item>
+    </style>
+
 </resources>

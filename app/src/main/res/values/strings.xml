@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Yi\'s Test</string>
+    <string name="city_header">City: </string>
+    <string name="state_header">State: </string>
+    <string name="input_city_hint">Please input city</string>
+    <string name="input_state_hint">Please input state</string>
+    <string name="submit">submit</string>
+    <string name="comma">,</string>
+    <string name="service_error">Please check your data service.</string>
+    <string name="no_city_alert">Please check the city input</string>
+    <string name="no_state_alert">Please check the state input</string>
+    <string name="general_input_error_alert">Please check your input</string>
+    <string name="city_state_not_match_alert">City and state are not matched</string>
+    <string name="confirm_alert">Confirm</string>
+    <string name="loading">loading…</string>
+    <string name="default_location">Default location is %1$s %2$s.</string>
 </resources>
