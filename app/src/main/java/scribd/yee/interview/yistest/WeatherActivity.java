@@ -42,7 +42,7 @@ public class WeatherActivity extends Activity implements WeatherCallback {
     private static JSONArray mForecastArray = new JSONArray();
     public static final String DEFAULT_CITY = "Fremont";
     public static final String DEFAULT_STATE = "CA";
-    // TODO: 11/16/15 Places
+    // The google Api environment has been setup in case of using specific map functions.
     private GoogleApiClient mGoogleApiClient;
 
     @Override
@@ -79,22 +79,6 @@ public class WeatherActivity extends Activity implements WeatherCallback {
                 }
             }
         });
-
-        //Since by checking the "code" value to find the incorrect location typing, the result is not very stable.
-        // that's why I decide to use google places API to check typing, but I just found the auto complete function
-        // maybe instead of check miss typing, we change the scenario to show user available options to let use to
-        // choose base on user's typing right now. But not sure about this.
-//        mGoogleApiClient = new GoogleApiClient.Builder(this).addApi(Places.GEO_DATA_API)
-//                .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
-//                    @Override
-//                    public void onConnectionFailed(ConnectionResult connectionResult) {
-//                        new WeatherAlert(getBaseContext(), connectionResult.getErrorMessage(), R.string
-//                                .confirm_alert);
-//                    }
-//                }).build();
-//        mGoogleApiClient.connect();
-//        GeoDataApi api =
-
     }
 
     @Override
