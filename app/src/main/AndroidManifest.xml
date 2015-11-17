@@ -1,5 +1,6 @@
-<manifest package="scribd.yee.interview.yistest"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest
+    package="scribd.yee.interview.yistest"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
@@ -14,6 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCaq_OczmD5JjIMTNIFegS5puWifHIWjok"/>
     </application>
-
 </manifest>

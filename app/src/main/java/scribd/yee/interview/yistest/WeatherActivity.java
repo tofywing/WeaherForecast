@@ -10,6 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.places.GeoDataApi;
+import com.google.android.gms.location.places.Places;
 
 import org.json.JSONArray;
 
@@ -36,6 +42,8 @@ public class WeatherActivity extends Activity implements WeatherCallback {
     private static JSONArray mForecastArray = new JSONArray();
     public static final String DEFAULT_CITY = "Fremont";
     public static final String DEFAULT_STATE = "CA";
+    // TODO: 11/16/15 Places
+    private GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +79,22 @@ public class WeatherActivity extends Activity implements WeatherCallback {
                 }
             }
         });
+
+        //Since by checking the "code" value to find the incorrect location typing, the result is not very stable.
+        // that's why I decide to use google places API to check typing, but I just found the auto complete function
+        // maybe instead of check miss typing, we change the scenario to show user available options to let use to
+        // choose base on user's typing right now. But not sure about this.
+//        mGoogleApiClient = new GoogleApiClient.Builder(this).addApi(Places.GEO_DATA_API)
+//                .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
+//                    @Override
+//                    public void onConnectionFailed(ConnectionResult connectionResult) {
+//                        new WeatherAlert(getBaseContext(), connectionResult.getErrorMessage(), R.string
+//                                .confirm_alert);
+//                    }
+//                }).build();
+//        mGoogleApiClient.connect();
+//        GeoDataApi api =
+
     }
 
     @Override
@@ -79,7 +103,7 @@ public class WeatherActivity extends Activity implements WeatherCallback {
         mForecastArray = channel.getForecastArray();
         //check either the city's or state's input see if it is incorrect
         int code = mForecastArray.optJSONObject(0).optInt("code");
-        if (code == 16 || code == 31)
+        if (code == 16 || code == 31 || code == 24)
             new WeatherAlert(this, R.string.general_input_error_alert, R.string.confirm_alert);
         else if (code == 11) {
             new WeatherAlert(this, R.string.city_state_not_match_alert, R.string.confirm_alert);
@@ -106,10 +130,10 @@ public class WeatherActivity extends Activity implements WeatherCallback {
     private boolean inputValid(View v) {
         //either city or state empty case has been handled by "query" "count = 0"
         if ((mCity = mInputCity.getText().toString()).isEmpty()) {
-            new WeatherAlert(this, R.string.no_city_alert, R.string.confirm_alert);
+            new WeatherAlert(v.getContext(), R.string.no_city_alert, R.string.confirm_alert);
             return false;
         } else if ((mState = mInputState.getText().toString()).isEmpty()) {
-            new WeatherAlert(this, R.string.no_city_alert, R.string.confirm_alert);
+            new WeatherAlert(v.getContext(), R.string.no_city_alert, R.string.confirm_alert);
             return false;
         }
         return true;

@@ -8,6 +8,11 @@ import org.json.JSONObject;
  */
 public class Channel implements ParseData {
     JSONArray forecastArray;
+    JSONObject Channel;
+
+    public JSONObject getChannel() {
+        return Channel;
+    }
 
     public JSONArray getForecastArray() {
         return forecastArray;
@@ -15,6 +20,7 @@ public class Channel implements ParseData {
 
     @Override
     public void parseJSON(JSONObject object) {
+        this.Channel = object;
         forecastArray = object.optJSONObject("item").optJSONArray("forecast");
     }
 }
