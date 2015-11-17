@@ -118,6 +118,7 @@ public class WeatherActivity extends Activity implements WeatherCallback {
     private void startService(String city, String state, Context context) {
         mDialog = new ProgressDialog(context);
         mDialog.setMessage(context.getString(R.string.loading));
+        mDialog.setCancelable(false);
         mDialog.show();
         mService.getWeather(city + "," + state);
     }
