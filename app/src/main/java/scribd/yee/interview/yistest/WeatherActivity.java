@@ -87,7 +87,8 @@ public class WeatherActivity extends Activity implements WeatherCallback {
         mForecastArray = channel.getForecastArray();
         //check either the city's or state's input see if it is incorrect
         int code = mForecastArray.optJSONObject(0).optInt("code");
-        new WeatherAlert(this,String.valueOf(code),R.string.confirm_alert);
+        //For testing the location code
+//        new WeatherAlert(this,String.valueOf(code),R.string.confirm_alert);
         if (code == 16 || code == 34 || code == 27)
             new WeatherAlert(this, R.string.general_input_error_alert, R.string.confirm_alert);
         else if (code == 11) {
